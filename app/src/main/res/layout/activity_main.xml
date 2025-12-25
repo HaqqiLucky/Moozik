@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8F5E9">
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/aiBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#2E7D32">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@drawable/bg_glass_panel"
+            android:elevation="4dp"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/ivAetherIcon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@android:drawable/ic_lock_idle_low_battery"
+                app:tint="#0288D1"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:layout_marginStart="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Aether AI"
+                    android:textColor="#01579B"
+                    android:textStyle="bold"
+                    android:textSize="16sp"/>
+                <TextView
+                    android:id="@+id/tvAiStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Zzz... (Sleeping)"
+                    android:textColor="#01579B"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnRestartVoice"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_popup_sync"
+                app:tint="#0288D1"
+                android:tooltipText="Restart AI"/>
+
+            <ImageButton
+                android:id="@+id/btnHelp"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@android:drawable/ic_menu_help"
+                app:tint="#01579B"
+                android:layout_marginStart="8dp"
+                android:tooltipText="How to use"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/aiBox"
+        android:layout_above="@id/playerPanel">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvAllSongs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="80dp"
+            android:clipToPadding="false"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/btnNewPlaylist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="+ BUAT PLAYLIST BARU"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#43A047"
+                android:layout_margin="16dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPlaylists"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/btnNewPlaylist"
+                android:paddingBottom="80dp"
+                android:clipToPadding="false"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnBackToPl"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← KEMBALI"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#388E3C"
+                android:layout_margin="8dp"/>
+
+            <TextView
+                android:id="@+id/tvPlaylistName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Playlist"
+                android:textSize="24sp"
+                android:padding="16dp"
+                android:textColor="#1B5E20"
+                android:textStyle="bold"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvPlaylistSongs"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="80dp"
+                android:clipToPadding="false"/>
+        </LinearLayout>
+    </ViewFlipper>
+
+    <LinearLayout
+        android:id="@+id/playerPanel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical"
+        android:background="#FFFFFF"
+        android:elevation="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="12dp"
+            android:gravity="center_vertical"
+            android:background="#C8E6C9">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMiniTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose a Song"
+                    android:textStyle="bold"
+                    android:textColor="#1B5E20"
+                    android:maxLines="1"
+                    android:ellipsize="end"/>
+
+                <TextView
+                    android:id="@+id/tvMiniArtist"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textSize="12sp"
+                    android:textColor="#2E7D32"/>
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAddCurrentToPl"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="+"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#66BB6A"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btnMiniPlay"
+                android:layout_width="60dp"
+                android:layout_height="50dp"
+                android:text="▶"
+                android:textSize="20dp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2E7D32"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/tabAllSongs"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="ALL SONGS"
+                android:textSize="12sp"
+                android:textColor="#FFFFFF"
+                android:backgroundTint="#2E7D32"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
+
+            <Button
+                android:id="@+id/tabPlaylists"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="PLAYLISTS"
+                android:textSize="12sp"
+                android:textColor="#1B5E20"
+                android:backgroundTint="#A5D6A7"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
